@@ -1,0 +1,31 @@
+name: Run Domain Logic / Table Module example
+
+on:
+  push:
+    branches:
+      - main  
+  pull_request:
+    branches:
+      - main  
+
+jobs:
+  run-example:
+    runs-on: ubuntu-latest  
+    
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2  
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2  
+        with:
+          python-version: '3.9'  
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip  # Actualiza pip.
+          pip install -r requirements.txt  # Instala las dependencias de Python desde requirements.txt.
+      
+      - name: Run the example script
+        run: |
+          python example_domain_logic.py  # Ejecuta tu script principal que demuestra el patrón Domain Logic / Table Module.
